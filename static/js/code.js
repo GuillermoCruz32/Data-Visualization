@@ -1,7 +1,5 @@
 /**
  * ---------------------------------------
- * This demo was created using amCharts 4.
- *
  * For more information visit:
  * https://www.amcharts.com/
  *
@@ -43,98 +41,102 @@ polygonSeries.exclude = ["AQ"];
 polygonSeries.useGeodata = true;
 polygonSeries.mapPolygons.template.nonScalingStroke = true;
 
-// Add images
-var imageSeries = chart.series.push(new am4maps.MapImageSeries());
-var imageSeries2 = chart.series.push(new am4maps.MapImageSeries());
-var imageSeries3 = chart.series.push(new am4maps.MapImageSeries());
-var imageSeries4 = chart.series.push(new am4maps.MapImageSeries());
+// Set the types of nodes you'll create
+var birthNodes = chart.series.push(new am4maps.MapImageSeries());
+var travelNodes = chart.series.push(new am4maps.MapImageSeries());
+var academyNodes = chart.series.push(new am4maps.MapImageSeries());
+var deathNode = chart.series.push(new am4maps.MapImageSeries());
 
-var imageTemplate = imageSeries.mapImages.template;
-imageTemplate.tooltipText = "{title}";
-imageTemplate.nonScaling = true;
+var birthTemplate = birthNodes.mapImages.template;
+birthTemplate.tooltipText = "{title}";
+birthTemplate.nonScaling = true;
 
-var imageTemplate2 = imageSeries2.mapImages.template;
-imageTemplate2.tooltipText = "{title}";
-imageTemplate2.nonScaling = true;
+var travelTemplate = travelNodes.mapImages.template;
+travelTemplate.tooltipText = "{title}";
+travelTemplate.nonScaling = true;
 
-var imageTemplate3 = imageSeries3.mapImages.template;
-imageTemplate3.tooltipText = "{title}";
-imageTemplate3.nonScaling = true;
+var academyTemplate = academyNodes.mapImages.template;
+academyTemplate.tooltipText = "{title}";
+academyTemplate.nonScaling = true;
 
-var imageTemplate4 = imageSeries4.mapImages.template;
-imageTemplate4.tooltipText = "{title}";
-imageTemplate4.nonScaling = true;
+var deathTemplate = deathNode.mapImages.template;
+deathTemplate.tooltipText = "{title}";
+deathTemplate.nonScaling = true;
 
-var marker = imageTemplate.createChild(am4core.Sprite);
-marker.path = targetSVG;
-marker.horizontalCenter = "middle";
-marker.verticalCenter = "middle";
-marker.scale = 0.5;
-marker.fill = am4core.color("#0116FF");
-marker.stroke = am4core.color("#0116FF");
+// Set the attributes of the nodes you've created. Most of the attributes will
+// be the same, and the color is really the only change.
 
-var marker2 = imageTemplate2.createChild(am4core.Sprite);
-marker2.path = targetSVG;
-marker2.horizontalCenter = "middle";
-marker2.verticalCenter = "middle";
-marker2.scale = 0.5;
-marker2.fill = am4core.color("#1BFF00");
-marker2.stroke = am4core.color("#1BFF00");
+var birthmarker = birthTemplate.createChild(am4core.Sprite);
+birthmarker.path = targetSVG;
+birthmarker.horizontalCenter = "middle";
+birthmarker.verticalCenter = "middle";
+birthmarker.scale = 0.5;
+birthmarker.fill = am4core.color("#0116FF");
+birthmarker.stroke = am4core.color("#0116FF");
 
-var marker3 = imageTemplate3.createChild(am4core.Sprite);
-marker3.path = targetSVG;
-marker3.horizontalCenter = "middle";
-marker3.verticalCenter = "middle";
-marker3.scale = 0.5;
-marker3.fill = am4core.color("#FFE000");
-marker3.stroke = am4core.color("#FFE000");
+var travelmarker = travelTemplate.createChild(am4core.Sprite);
+travelmarker.path = targetSVG;
+travelmarker.horizontalCenter = "middle";
+travelmarker.verticalCenter = "middle";
+travelmarker.scale = 0.5;
+travelmarker.fill = am4core.color("#1BFF00");
+travelmarker.stroke = am4core.color("#1BFF00");
 
-var marker4 = imageTemplate4.createChild(am4core.Sprite);
-marker4.path = targetSVG;
-marker4.horizontalCenter = "middle";
-marker4.verticalCenter = "middle";
-marker4.scale = 0.5;
-marker4.fill = am4core.color("#000000");
-marker4.stroke = am4core.color("#000000");
-// marker.fill = interfaceColors.getFor("alternativeBackground");
+var academymarker = academyTemplate.createChild(am4core.Sprite);
+academymarker.path = targetSVG;
+academymarker.horizontalCenter = "middle";
+academymarker.verticalCenter = "middle";
+academymarker.scale = 0.5;
+academymarker.fill = am4core.color("#FFE000");
+academymarker.stroke = am4core.color("#FFE000");
 
-imageTemplate.propertyFields.latitude = "latitude";
-imageTemplate.propertyFields.longitude = "longitude";
-imageSeries.data = [ {
+var deathmarker = deathTemplate.createChild(am4core.Sprite);
+deathmarker.path = targetSVG;
+deathmarker.horizontalCenter = "middle";
+deathmarker.verticalCenter = "middle";
+deathmarker.scale = 0.5;
+deathmarker.fill = am4core.color("#000000");
+deathmarker.stroke = am4core.color("#000000");
+
+
+// Populating the node with the correct example JSON data.
+birthTemplate.propertyFields.latitude = "latitude";
+birthTemplate.propertyFields.longitude = "longitude";
+birthNodes.data = [ {
   "svgPath": targetSVG,
-  "title": "Buenos Aires, Artist Name",
+  "title": "Buenos Aires, Carlos Enríquez Gómez",
   "latitude": -34.6037,
   "longitude": -58.3816,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Lima, Artist Name",
+  "title": "Lima, Fernando Botero",
   "latitude": -12.0464,
   "longitude": -77.0428,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Brasilia, Artist Name",
+  "title": "Brasilia, Víctor Grippo",
   "latitude": -15.8267,
   "longitude": -47.9218,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Cape Town, Artist Name",
+  "title": "Cape Town, Cheri Samba",
   "latitude": -33.9249,
   "longitude": 18.4241,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Seoul, Artist Name",
+  "title": "Seoul, Park Seo-bo",
   "latitude": 37.5665,
   "longitude": 126.9780,
   "scale": 0.5
 }];
 
-imageTemplate3.propertyFields.latitude = "latitude";
-imageTemplate3.propertyFields.longitude = "longitude";
-imageSeries3.data = [ {
+academyTemplate.propertyFields.latitude = "latitude";
+academyTemplate.propertyFields.longitude = "longitude";
+academyNodes.data = [ {
   "svgPath": targetSVG,
   "title": "Belgrade, Art Academy",
   "latitude": 44.8048,
@@ -142,144 +144,147 @@ imageSeries3.data = [ {
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Paris, Art Academy",
+  "title": "Paris, Paris Academy of Art",
   "latitude": 48.8567,
   "longitude": 2.7510,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Stockholm, Art Academy",
+  "title": "Stockholm, Stockholms Dramatiska Högskola",
   "latitude": 59.3328,
   "longitude": 17.5445,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Prague, Art Academy",
+  "title": "Prague, Academy of Fine Arts",
   "latitude": 50.0878,
   "longitude": 14.8205,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Buenos Aires, Art Academy",
+  "title": "Buenos Aires, MALBA",
   "latitude": -34.6037,
   "longitude": -58.7816,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Madrid, Art Academy",
+  "title": "Madrid, Academia de Pintura DeCinti Villalóns",
   "latitude": 40.4167,
   "longitude": -3.3033,
   "scale": 0.5
 }];
 
-imageTemplate4.propertyFields.latitude = "latitude";
-imageTemplate4.propertyFields.longitude = "longitude";
-imageSeries4.data = [ {
+deathTemplate.propertyFields.latitude = "latitude";
+deathTemplate.propertyFields.longitude = "longitude";
+deathNode.data = [ {
   "svgPath": targetSVG,
-  "title": "Moscow",
+  "title": "Moscow, Víctor Grippo",
   "latitude": 55.7558,
   "longitude": 37.6176,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Madrid",
+  "title": "Madrid, Fernando Botero",
   "latitude": 40.4167,
   "longitude": -3.7033,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Brussels",
+  "title": "Brussels, Carlos Enríquez Gómez",
   "latitude": 50.8371,
   "longitude": 4.3676,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Ljubljana",
+  "title": "Ljubljana, Cheri Samba",
   "latitude": 46.0514,
   "longitude": 14.5060,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Oslo",
+  "title": "Oslo, Park Seo-bo",
   "latitude": 59.9138,
   "longitude": 10.7387,
   "scale": 0.5
 } ];
 
-imageTemplate2.propertyFields.latitude = "latitude";
-imageTemplate2.propertyFields.longitude = "longitude";
-imageSeries2.data = [ {
+travelTemplate.propertyFields.latitude = "latitude";
+travelTemplate.propertyFields.longitude = "longitude";
+travelNodes.data = [ {
   "id": "london",
   "svgPath": targetSVG,
-  "title": "London",
+  "title": "London, Carlos Enríquez Gómez",
   "latitude": 51.5002,
   "longitude": -0.1262,
   "scale": 1
 }, {
   "svgPath": targetSVG,
-  "title": "Prague",
+  "title": "Prague, Cheri Samba",
   "latitude": 50.0878,
   "longitude": 14.4205,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Athens",
+  "title": "Athens, Víctor Grippo",
   "latitude": 37.9792,
   "longitude": 23.7166,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Lisbon",
+  "title": "Lisbon, Carlos Enríquez Gómez",
   "latitude": 38.7072,
   "longitude": -9.1355,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Belgrade",
+  "title": "Belgrade, Víctor Grippo",
   "latitude": 44.8048,
   "longitude": 20.4781,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Stockholm",
+  "title": "Stockholm, Park Seo-bo",
   "latitude": 59.3328,
   "longitude": 18.0645,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Bern",
+  "title": "Bern, Cheri Samba",
   "latitude": 46.9480,
   "longitude": 7.4481,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Kiev",
+  "title": "Kiev, Víctor Grippo",
   "latitude": 50.4422,
   "longitude": 30.5367,
   "scale": 0.5
 }, {
   "svgPath": targetSVG,
-  "title": "Paris",
+  "title": "Paris, Carlos Enríquez Gómez",
   "latitude": 48.8567,
   "longitude": 2.3510,
   "scale": 0.5
 } ];
 
-// Add lines
 
-var lineSeries2 = chart.series.push(new am4maps.MapLineSeries());
-lineSeries2.dataFields.multiGeoLine = "multiGeoLine";
+// Here is where we begin to create the lines between nodes depending on the region.
+// Each region will have a different color edge line, so the lines need to be created
+// independtly of each other.
+var southAmericaLines = chart.series.push(new am4maps.MapLineSeries());
+southAmericaLines.dataFields.multiGeoLine = "multiGeoLine";
 
-var lineTemplate2 = lineSeries2.mapLines.template;
-lineTemplate2.nonScalingStroke = true;
-lineTemplate2.arrow.nonScaling = true;
-lineTemplate2.arrow.width = 4;
-lineTemplate2.arrow.height = 5;
-lineTemplate2.fill = am4core.color("#0116FF");
-lineTemplate2.stroke = am4core.color("#0116FF")
-lineTemplate2.line.strokeOpacity = 0.8;
+var southAmericaTemplate = southAmericaLines.mapLines.template;
+southAmericaTemplate.nonScalingStroke = true;
+southAmericaTemplate.arrow.nonScaling = true;
+southAmericaTemplate.arrow.width = 4;
+southAmericaTemplate.arrow.height = 5;
+southAmericaTemplate.fill = am4core.color("#0116FF");
+southAmericaTemplate.stroke = am4core.color("#0116FF")
+southAmericaTemplate.line.strokeOpacity = 0.8;
 
-lineSeries2.data = [{
+// Adding the JSON data for one type of line to connect the nodes.
+southAmericaLines.data = [{
   "multiGeoLine": [
     [
       { "latitude": -34.6037, "longitude": -58.3816 },
@@ -373,19 +378,19 @@ lineSeries2.data = [{
   ]
 }];
 
-var lineSeries3 = chart.series.push(new am4maps.MapLineSeries());
-lineSeries3.dataFields.multiGeoLine = "multiGeoLine";
+var africaLines = chart.series.push(new am4maps.MapLineSeries());
+africaLines.dataFields.multiGeoLine = "multiGeoLine";
 
-var lineTemplate3 = lineSeries3.mapLines.template;
-lineTemplate3.nonScalingStroke = true;
-lineTemplate3.arrow.nonScaling = true;
-lineTemplate3.arrow.width = 4;
-lineTemplate3.arrow.height = 5;
-lineTemplate3.fill = am4core.color("#000000");
-lineTemplate3.stroke = am4core.color("#000000")
-lineTemplate3.line.strokeOpacity = 0.8;
+var africaTemplate = africaLines.mapLines.template;
+africaTemplate.nonScalingStroke = true;
+africaTemplate.arrow.nonScaling = true;
+africaTemplate.arrow.width = 4;
+africaTemplate.arrow.height = 5;
+africaTemplate.fill = am4core.color("#000000");
+africaTemplate.stroke = am4core.color("#000000")
+africaTemplate.line.strokeOpacity = 0.8;
 
-lineSeries3.data = [{
+africaLines.data = [{
   "multiGeoLine": [
     [
       { "latitude": -33.9249, "longitude": 18.4241 },
@@ -415,19 +420,19 @@ lineSeries3.data = [{
   ]
 }];
 
-var lineSeries4 = chart.series.push(new am4maps.MapLineSeries());
-lineSeries4.dataFields.multiGeoLine = "multiGeoLine";
+var asiaLines = chart.series.push(new am4maps.MapLineSeries());
+asiaLines.dataFields.multiGeoLine = "multiGeoLine";
 
-var lineTemplate4 = lineSeries4.mapLines.template;
-lineTemplate4.nonScalingStroke = true;
-lineTemplate4.arrow.nonScaling = true;
-lineTemplate4.arrow.width = 4;
-lineTemplate4.arrow.height = 5;
-lineTemplate4.fill = am4core.color("#e03e96");
-lineTemplate4.stroke = am4core.color("#e03e96")
-lineTemplate4.line.strokeOpacity = 0.8;
+var asiaTemplate = asiaLines.mapLines.template;
+asiaTemplate.nonScalingStroke = true;
+asiaTemplate.arrow.nonScaling = true;
+asiaTemplate.arrow.width = 4;
+asiaTemplate.arrow.height = 5;
+asiaTemplate.fill = am4core.color("#e03e96");
+asiaTemplate.stroke = am4core.color("#e03e96")
+asiaTemplate.line.strokeOpacity = 0.8;
 
-lineSeries4.data = [{
+asiaLines.data = [{
   "multiGeoLine": [
     [
       { "latitude": 37.5665, "longitude": 126.9780 },
